@@ -1,0 +1,24 @@
+.accordion {
+    background: linear-gradient(to bottom, #3d7aaf, #2f5f8a);
+    color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .accordion .accordion-button {
+    background-color: transparent;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+  }
+  
+  .accordion .accordion-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .accordion .accordion-body {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+  }
+  
