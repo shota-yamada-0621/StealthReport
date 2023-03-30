@@ -42,7 +42,7 @@ function ImpressionDetails() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8040/api/detail/${id}/`)
+      .get(`http://localhost:8000/api/detail/${id}/`)
       .then((response) => {
         setImpression(response.data);
       })
@@ -53,7 +53,7 @@ function ImpressionDetails() {
 
   const handleDelete = useCallback(() => {
     axios
-      .delete(`http://localhost:8040/api/delete/${id}/`)
+      .delete(`http://localhost:8000/api/delete/${id}/`)
       .then(() => {
         console.log('削除が完了しました。');
       })
@@ -68,7 +68,7 @@ function ImpressionDetails() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8040/api/detail/${id}/`)
+      .get(`http://localhost:8000/api/detail/${id}/`)
       .then((response) => {
         setImpression(response.data);
       })
@@ -79,7 +79,7 @@ function ImpressionDetails() {
 
     const handleEdit = () => {
       axios
-      .patch(`http://localhost:8040/api/update/${id}/`)
+      .patch(`http://localhost:8000/api/update/${id}/`)
       .then(() => {
       })
       .catch((error) => {
