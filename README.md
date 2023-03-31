@@ -61,7 +61,7 @@ AIで日報を書くことも可能です。
 openaiのapikeyを作成する必要があります。こちらのページを参考に作成をお願いします。
 https://auto-worker.com/blog/?p=6988
 
-作成後、server/api/.envファイルの該当箇所に自身のAPIkeyをコピー＆ペーストしてください。
+作成後、server/api/.envファイルの下記、該当箇所に自身のAPIkeyをコピー＆ペーストしてください。
 
  openai account api key
  OPENAI_API_KEY="ここに自身のopenai API keyを貼り付けて下さい"
@@ -133,7 +133,7 @@ Excelに書き込む際は、作成する日報の日付を参照し、該当す
 
 - マイグレーションの初期化
   ```sh
-  python manage.py migrate wdw zero
+  python manage.py migrate nippo zero
   ```
   初期化実施後、`nippo/migrations`フォルダ内の`__init__.py`以外のファイルを削除する。
 
