@@ -8,14 +8,13 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useHistory } from 'react-router-dom';
 import { Blocks } from  'react-loader-spinner'
-import FormModal from './FormModal';
+import { Modal } from 'react-bootstrap';
 
 
 function MyForm() {
 
   const [isLoading, setIsLoading] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [show, setShow] = useState(false);
   const history = useHistory()
 
   const [formState, setFormState] = useState({
@@ -38,24 +37,21 @@ function MyForm() {
     const handleSubmit = async (e) => {
       e.preventDefault();
       setIsLoading(true);
+      setShow(true);
       try {
         const response = await axios.post('http://localhost:8000/api/create/', formState, {
         });
         console.log(response.data);
-        setIsModalOpen(true);
-        history.push('/');
       } catch (error) {
         console.log(formState);
         console.error(error);
       } finally {
-        setIsLoading(false); 
+        history.push('/');
+        setIsLoading(false);
+        setShow(false)
       }
     };
 
-    const handleCloseModal = () => {
-      setIsModalOpen(false);
-      history.push('/');
-    }
 
   const handleYesClick = () => {
     setFormState({
@@ -96,7 +92,7 @@ function MyForm() {
       lessen_check: 'no'
     });
   };
-
+  const handleClose = () => setShow(false);
 
   return (
     <>
@@ -226,14 +222,20 @@ function MyForm() {
                   <div style={{ marginLeft: '10px' }}>※日報を書いています</div>
                 </>
               ) : null}
-                        {isModalOpen && (
-            <FormModal onClose={handleCloseModal}>
-              日報の作成が完了しました。トップページに戻ります。
-            </FormModal>)}
           </div>
         </div>
         <br></br>
       </Form>
+      <Modal show={show} onHide={handleClose} centered closeButton={false} className=''>
+        <Modal.Header style={{ backgroundColor: "#2196f3" }}>
+          <Modal.Title style={{ color: "#fff" }}>日報を作成しています</Modal.Title>
+        </Modal.Header>
+        <Modal.Body style={{ backgroundColor: "#e6f3f7" }}>
+          <p>作成が完了したら、自動でトップページに戻ります</p>
+        </Modal.Body>
+        <Modal.Footer style={{ backgroundColor: "#e6f3f7", borderTop: "none", display: "flex", justifyContent: "center" }}>
+        </Modal.Footer>
+      </Modal>
     </>
   );
   }
